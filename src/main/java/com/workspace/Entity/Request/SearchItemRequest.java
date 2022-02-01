@@ -8,7 +8,7 @@ import lombok.Data;
  *
  */
 @Data
-public class ItemSearchRequest {
+public class SearchItemRequest {
 
 	private String field;
 

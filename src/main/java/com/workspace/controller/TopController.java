@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.workspace.Entity.Items;
-import com.workspace.Entity.Request.ItemSearchRequest;
+import com.workspace.Entity.Request.SearchItemRequest;
 import com.workspace.Services.TopService;
 
 import lombok.RequiredArgsConstructor;
@@ -45,7 +45,7 @@ public class TopController {
 	 */
 	@ResponseBody
 	@RequestMapping("/search")
-	public List<Items> getSearchItemsControll(@RequestBody ItemSearchRequest request) {
+	public List<Items> getSearchItemsControll(@RequestBody SearchItemRequest request) {
 		return topservice.getSearchItemsServe(request);
 	}
 

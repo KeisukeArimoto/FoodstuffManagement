@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
 import com.workspace.Entity.Items;
-import com.workspace.Entity.Request.ItemSearchRequest;
+import com.workspace.Entity.Request.SearchItemRequest;
 import com.workspace.repositories.ItemRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -48,7 +48,7 @@ public class TopService {
 	 *
 	 * @return
 	 */
-	public List<Items> getSearchItemsServe(ItemSearchRequest request) {
+	public List<Items> getSearchItemsServe(SearchItemRequest request) {
 		List<Items> itemList = itemRepository.searchByfieldvalue(request.getField(), request.getValue());
 		return itemList;
 	}

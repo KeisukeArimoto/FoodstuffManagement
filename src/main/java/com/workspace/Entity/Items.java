@@ -16,6 +16,8 @@ import lombok.Data;
 @Data
 @Table(name="Items")
 public class Items {
+	//TODO:インスタンスがnewされたタイミングで削除フラグfalse,更新ユーザー,更新日時が
+	//入ったインスタンスが作成されるようにする(スーパークラス作成)
 
 	//ID
 	@Id
