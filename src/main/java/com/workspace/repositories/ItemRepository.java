@@ -9,6 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import com.workspace.Entity.Items;
 
+/**
+ * Itemsに紐づく処理のリポジトリ
+ * @author ari77
+ *
+ */
 @Repository
 public interface ItemRepository extends JpaRepository <Items, Long> {
 

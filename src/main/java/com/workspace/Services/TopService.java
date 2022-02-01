@@ -4,12 +4,19 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Lists;
 import com.workspace.Entity.Items;
 import com.workspace.Entity.Request.ItemSearchRequest;
 import com.workspace.repositories.ItemRepository;
 
 import lombok.RequiredArgsConstructor;
 
+
+/**
+ * /topに紐づく処理のサービス
+ * @author ari77
+ *
+ */
 @RequiredArgsConstructor
 @Service
 public class TopService {
@@ -18,14 +25,21 @@ public class TopService {
 	private final ItemRepository itemRepository;
 
 	/**
-	 * top画面アクセス時にすべてのItemを取得するサービス。
-	 * 削除フラグが立っているものについてはクライアントで非表示にする。
+	 *  top画面アクセス時に削除フラグが立っていないItemを取得するコントローラー。
 	 *
-	 * @return Item
+	 * @return Itemのリスト
 	 */
-	//TODO:Repositoryを使ってデータを取得するロジック実装
-	public List<Items> getAllItemsServe() {
-		return itemRepository.findAll();
+	public List<Items> getExistItemsServe() {
+		List<Items> allItemsList = itemRepository.findAll();
+
+		//削除フラグが立っているものはのぞく
+		List<Items> existItemList = Lists.newArrayList();
+		for (Items item : allItemsList) {
+			if (!item.isDeleteFlag()) {
+				existItemList.add(item);
+			}
+		}
+		return existItemList;
 
 	}
 

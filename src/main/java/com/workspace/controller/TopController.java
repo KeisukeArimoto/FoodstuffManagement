@@ -13,6 +13,11 @@ import com.workspace.Services.TopService;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * /topに紐づく処理のコントローラー
+ * @author ari77
+ *
+ */
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/top")
@@ -23,15 +28,14 @@ public class TopController {
 	private final TopService topservice;
 
 	/**
-	 * top画面アクセス時にすべてのItemを取得するコントローラー。
-	 * 削除フラグが立っているものについてはクライアントで非表示にする。
+	 * top画面アクセス時に削除フラグが立っていないItemを取得するコントローラー。
 	 *
-	 * @return Item
+	 * @return Itemのリスト
 	 */
 	@ResponseBody
 	@RequestMapping("/")
-	public List<Items> getAllItemsControll() {
-		return topservice.getAllItemsServe();
+	public List<Items> getExistItemsControll() {
+		return topservice.getExistItemsServe();
 	}
 
 	/**
