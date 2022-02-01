@@ -5,9 +5,17 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.workspace.Entity.Items;
+import com.workspace.Entity.Request.ItemSearchRequest;
+import com.workspace.repositories.ItemRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class TopService {
+
+	//コンストラクタインジェクション
+	private final ItemRepository itemRepository;
 
 	/**
 	 * top画面アクセス時にすべてのItemを取得するサービス。
@@ -17,7 +25,7 @@ public class TopService {
 	 */
 	//TODO:Repositoryを使ってデータを取得するロジック実装
 	public List<Items> getAllItemsServe() {
-		return null;
+		return itemRepository.findAll();
 
 	}
 
@@ -26,9 +34,9 @@ public class TopService {
 	 *
 	 * @return
 	 */
-	//TODO:Repositoryを使ってデータを取得するロジック実装
-	public List<Items> getSearchItemsServe() {
-		return null;
+	public List<Items> getSearchItemsServe(ItemSearchRequest request) {
+		List<Items> itemList = itemRepository.searchByfieldvalue(request.getField(), request.getValue());
+		return itemList;
 	}
 
 }
