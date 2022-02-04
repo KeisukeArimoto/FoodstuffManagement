@@ -5,8 +5,9 @@ import java.time.LocalDate;
 import lombok.Data;
 
 //TODO:DTOをどうやって使用するか(使用するべきかも含む)を調査＆実装
+//写真の情報は別テーブルで永続化予定のためDTOも使ってみる
 @Data
-public class ItemsListDto {
+public class ItemsDto {
 
 	private String name; //商品名
 	private double amount; //残量

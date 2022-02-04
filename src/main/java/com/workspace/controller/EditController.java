@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.workspace.Entity.Request.AddNewItemRequest;
+import com.workspace.Entity.Request.DeleteItemRequest;
+import com.workspace.Entity.Request.EditItemRequest;
 import com.workspace.Services.EditService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,22 +30,20 @@ public class EditController {
 		editService.addNewItemServe(request);
 	}
 
-	//TODO:既存Item編集用コントローラー実装
 	/**
 	 * 既存Item編集用コントローラー
 	 */
 	@PutMapping("/{Item}")
-	public void editItemController() {
-
+	public void editItemController(@RequestBody EditItemRequest request) {
+		editService.editItemServe(request);
 	}
 
-	//TODO:削除用コントローラー実装
 	/**
 	 * Item削除用コントローラー
 	 */
 	@DeleteMapping("/delete/{Item}")
-	public void deleteItemController() {
-
+	public void deleteItemController(@RequestBody DeleteItemRequest request) {
+		editService.deleteItemServe(request);
 	}
 
 }

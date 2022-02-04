@@ -1,5 +1,7 @@
 package com.workspace.Entity.Request;
 
+import java.time.LocalDate;
+
 import lombok.Data;
 
 /**
@@ -9,6 +11,13 @@ import lombok.Data;
  */
 @Data
 public class EditItemRequest {
-	//TODO:リクエストオブジェクト実装
+	private String name;
 
+	private double amount;
+
+	private String unit;
+
+	private LocalDate deadline;
+
+	private String tag;
 }
