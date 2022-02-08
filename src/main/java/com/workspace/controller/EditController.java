@@ -2,6 +2,7 @@ package com.workspace.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,8 +43,8 @@ public class EditController {
 	 * Item削除用コントローラー
 	 */
 	@DeleteMapping("/delete/{Item}")
-	public void deleteItemController(@RequestBody DeleteItemRequest request) {
-		editService.deleteItemServe(request);
+	public void deleteItemController(@RequestBody DeleteItemRequest request, @PathVariable long id) {
+		editService.deleteItemServe(request, id);
 	}
 
 }

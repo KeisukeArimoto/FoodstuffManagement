@@ -17,4 +17,17 @@ public class ItemsDto {
 	private boolean deleteFlag; //削除フラグ
 	private String deleteReason; //削除理由
 
+	//コンストラクタ
+	public ItemsDto(String name, double amount, String unit, LocalDate deadline,
+			String tag, boolean deleteFlag, String deleteReason) {
+		this.name = name;
+		this.amount = amount;
+		this.unit = unit;
+		this.deadline = deadline;
+		this.tag = tag;
+		this.deleteFlag = deleteFlag;
+		this.deleteReason = deleteReason;
+	}
+
+
 }

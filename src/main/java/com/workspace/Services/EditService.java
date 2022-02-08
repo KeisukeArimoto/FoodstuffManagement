@@ -1,7 +1,11 @@
 package com.workspace.Services;
 
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.workspace.Entity.Items;
 import com.workspace.Entity.Dto.ItemsDto;
 import com.workspace.Entity.Request.AddNewItemRequest;
 import com.workspace.Entity.Request.DeleteItemRequest;
@@ -17,18 +21,19 @@ public class EditService {
 	//コンストラクタインジェクション
 	private final ItemRepository itemRepository;
 
-	//TODO:Item新規追加用サービス実装
+	private final ModelMapper modelMapper;
+
 	/**
 	 * 新規Item追加用サービス
 	 */
 	public void addNewItemServe(AddNewItemRequest request) {
-		ItemsDto item = new ItemsDto();
-		item.setName(request.getName());
-		item.setAmount(request.getAmount());
-		item.setUnit(request.getUnit());
-		item.setDeadline(request.getDeadline());
-		item.setTag(request.getTag());
-		item.setDeleteFlag(false);
+		ItemsDto itemDto = new ItemsDto(request.getName(), request.getAmount(),
+				request.getUnit(), request.getDeadline(), request.getTag(), false, "");
+
+		//ModelMapperを利用したDTO→Entityの詰め替え
+		Items item = modelMapper.map(itemDto, Items.class);
+		itemRepository.save(item);
+
 
 	}
 
@@ -40,11 +45,17 @@ public class EditService {
 
 	}
 
-	//TODO:削除用サービス実装
 	/**
 	 * 既存Item削除用サービス
 	 */
-	public void deleteItemServe(DeleteItemRequest request) {
+	public void deleteItemServe(DeleteItemRequest request, long id) {
+		Optional<Items> itemOptional = itemRepository.findById(id);
+		if (itemOptional.isPresent()) {
+			Items item = itemOptional.get();
+			item.setDeleteReason(request.getDeleteReason());
+			item.setDeleteFlag(true);
+			itemRepository.save(item);
+		}
 
 	}
 
