@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.google.common.collect.Lists;
 import com.workspace.Entity.Items;
 import com.workspace.Entity.Request.SearchItemRequest;
-import com.workspace.repositories.ItemRepository;
+import com.workspace.Repositories.ItemRepository;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.workspace.controller;
+package com.workspace.Controller;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/top")
+@RequestMapping("/foodStuffManager/top")
 public class TopController {
 
 	//コンストラクタインジェクション

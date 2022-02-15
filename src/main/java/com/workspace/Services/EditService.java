@@ -10,7 +10,7 @@ import com.workspace.Entity.Dto.ItemsDto;
 import com.workspace.Entity.Request.AddNewItemRequest;
 import com.workspace.Entity.Request.DeleteItemRequest;
 import com.workspace.Entity.Request.EditItemRequest;
-import com.workspace.repositories.ItemRepository;
+import com.workspace.Repositories.ItemRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -37,12 +37,22 @@ public class EditService {
 
 	}
 
-	//TODO:既存Item編集用サービス実装
 	/**
 	 * 既存Item編集用サービス
 	 */
 	public void editItemServe(EditItemRequest request) {
 
+		Optional<Items> itemOptional = itemRepository.findById(request.getId());
+
+		if (itemOptional.isPresent()) {
+			Items item = itemOptional.get();
+			item.setName(request.getName());
+			item.setAmount(request.getAmount());
+			item.setUnit(request.getUnit());
+			item.setDeadline(request.getDeadline());
+			item.setTag(request.getTag());
+			itemRepository.save(item);
+		}
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package com.workspace.controller;
+package com.workspace.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/edit")
+@RequestMapping("/foodStuffManager/edit")
 public class EditController {
 
 	//コンストラクタインジェクション

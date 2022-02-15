@@ -1,4 +1,4 @@
-package com.workspace.repositories;
+package com.workspace.Repositories;
 
 import java.util.List;
 
