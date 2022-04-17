@@ -1,7 +1,6 @@
 package com.workspace.Entity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,12 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name="Items")
-public class Items {
+public class Items extends SuperEntity {
 
 	//ID
 	@Id
@@ -51,12 +52,5 @@ public class Items {
 	@Column(nullable = true)
 	private String deleteReason;
 
-	//更新ユーザー
-	@Column
-	private String updateUser;
-
-	//更新日時
-	@Column
-	private LocalDateTime updateDateTime;
 
 }
